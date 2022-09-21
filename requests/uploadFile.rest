@@ -1,4 +1,3 @@
 POST http://localhost:3001/api/upload/ 
-Content-Type: audio/x-midi
 
 < ./starwars.mid
