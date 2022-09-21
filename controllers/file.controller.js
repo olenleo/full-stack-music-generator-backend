@@ -3,7 +3,7 @@ const crypto = require("crypto");
 const uploadFile = require("../middleware/upload");
 const midiParser = require('midi-parser-js');
 const fs = require("fs");
-/*
+
 const upload = async (req, res) => {
   console.log('Upload request')
   console.log('Request body:', req.body)
@@ -28,7 +28,7 @@ const upload = async (req, res) => {
     });
   }
 };
-*/
+
 const getListFiles = (req, res) => {
   console.log('GetListFiles request')
   const directoryPath = __basedir + "/resources/static/assets/midi/";
@@ -88,7 +88,7 @@ const remove = (request, response) => {
 };
 */
 module.exports = {
-  
+  upload,
   getListFiles,
   readFile
 };

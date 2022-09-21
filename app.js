@@ -6,7 +6,6 @@ app.use(express.static('build'))
 const mongoose = require('mongoose')
 app.use(cors())
 
-
 const logger = require('./utils/logger')
 
 logger.info('connecting to', config.MONGODB_URI)
