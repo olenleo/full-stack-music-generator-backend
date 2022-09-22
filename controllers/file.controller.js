@@ -27,6 +27,7 @@ const upload = async (req, res) => {
       message: `Could not upload the file: ${err}`,
     });
   }
+  console.log('Upload process done,', res)
 };
 
 const getListFiles = (req, res) => {
