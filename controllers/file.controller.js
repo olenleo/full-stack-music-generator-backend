@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const crypto = require("crypto");
 const uploadFile = require("../middleware/upload");
-const midiParser = require('midi-parser-js');
+const MidiParser = require('midi-parser-js');
 const fs = require("fs");
 
 const upload = async (req, res) => {
@@ -54,14 +54,15 @@ const getListFiles = (req, res) => {
 
 
 const readFile = (request, result) => {
-  console.log('Recieved: readFile ', request.params.name)
-  const filePath = __basedir + '/resources/static/assets/midi/' + request.params.name;
-  let midiArray = ""
-  const parsedFile = fs.readFile(filePath, 'base64', function (err,data) {
-    midiArray = midiParser.parse(data)
-    result.status(200).send(midiArray)
-  });
-}
+    console.log('Recieved: readFile ', request.params.name)
+    const filePath = __basedir + '/resources/static/assets/midi/' + request.params.name;
+    fs.readFile(filePath, 'base64', function (err,data) {
+        // Parse the obtainer base64 string ...
+        let midiArray = MidiParser.parse(data);
+        // done!
+        result.status(200).send(midiArray);
+      });
+    };
 /*
 const download = (req, res) => {
   console.log('Download! ')
@@ -76,7 +77,6 @@ const download = (req, res) => {
   });
 };
 */
-
 /*
 const remove = (request, response) => {
   console.log(request.params)
