@@ -2,7 +2,6 @@ const express = require('express')
 const config = require('./utils/config')
 const app = express()
 const cors = require('cors')
-app.use(express.static('build'))
 const mongoose = require('mongoose')
 app.use(cors())
 
@@ -17,8 +16,8 @@ mongoose.connect(config.MONGODB_URI)
   .catch((error) => {
     logger.error('error connection to MongoDB:', error.message)
   })
-
-app.use(express.static('build'))
+// NOTE: Check the / in the following deployment
+app.use(express.static('/build'))
 app.use(express.json())
 const initRoutes = require("./routes/index")
 global.__basedir = __dirname  
