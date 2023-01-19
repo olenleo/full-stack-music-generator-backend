@@ -17,7 +17,6 @@ mongoose.connect(config.MONGODB_URI)
   .catch((error) => {
     logger.error('error connection to MongoDB:', error.message)
   })
-// NOTE: Check the / in the following deployment
 app.use(express.json())
 const initRoutes = require("./routes/index")
 global.__basedir = __dirname  
